@@ -7,12 +7,12 @@ class TestBasketView(TestCase):
     def setUp(self):
         User.objects.create(username='admin')
         Category.objects.create(name='django', slug='django')
-        Product.objects.create(category_id=1, title='djnago beginners', created_by_id=1,
-                               slug='django-beginners', price='20.00', image='django')
-        Product.objects.create(category_id=1, title='django beginners', created_by_id=1,
-                               slug='django-beginners', price='20.00', image='django')
-        Product.objects.create(category_id=1, title='django beginners', created_by_id=1,
-                               slug='django-beginners', price='20.00', image='django')
+        Product.objects.create(category_id=1, title='django beginners', created_by_id=1, slug='django-beginners',
+                               price='20.00', image='django')
+        Product.objects.create(category_id=1, title='django beginners', created_by_id=1, slug='django-beginners',
+                               price='20.00', image='django')
+        Product.objects.create(category_id=1, title='django beginners', created_by_id=1, slug='django-beginners',
+                               price='20.00', image='django')
         self.client.post(
             reverse('basket:basket_add'), {"productid": 1, "productqty": 1, "action": "post"}, xhr=True)
         self.client.post(
@@ -21,7 +21,6 @@ class TestBasketView(TestCase):
     def test_basket_url(self):
         """
         Test homepage response status
-        :return:
         """
         response = self.client.get(reverse('basket:basket_summary'))
         self.assertEqual(response.status_code, 200)
@@ -29,7 +28,6 @@ class TestBasketView(TestCase):
     def test_basket_add(self):
         """
         Test adding items to the basket
-        :return:
         """
         response = self.client.post(
             reverse('basket:basket_add'), {"productid": 3, "productqty": 1, "action": "post"}, xhr=True)
@@ -41,7 +39,6 @@ class TestBasketView(TestCase):
     def test_basket_delete(self):
         """
         Test deleting items from the basket
-        :return:
         """
         response = self.client.post(
             reverse('basket:basket_delete'), {"productid": 2, "action": "post"}, xhr=True)
@@ -50,12 +47,7 @@ class TestBasketView(TestCase):
     def test_basket_update(self):
         """
         Test updating items from the basket
-        :return:
         """
         response = self.client.post(
             reverse('basket:basket_update'), {"productid": 2, "productqty": 1, "action": "post"}, xhr=True)
         self.assertEqual(response.json(), {'qty': 2, 'subtotal': '40.00'})
-
-
-
-

@@ -21,7 +21,6 @@ class Basket():
         :param product:
         """
         product_id = str(product.id)
-
         if product_id in self.basket:
             self.basket[product_id]['qty'] = qty
         else:
@@ -43,18 +42,18 @@ class Basket():
 
         for item in basket.values():
             item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price']*item['qty']
+            item['total_price'] = item['price'] * item['qty']
             yield item
 
     def __len__(self):
         """
-        Get the basket data and count
+        Get the basket data and count the qty of items
         :return:
         """
         return sum(item['qty'] for item in self.basket.values())
 
     def get_total_price(self):
-        return sum(Decimal(item['price'])*item['qty'] for item in self.basket)
+        return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
 
     def delete(self, product):
         """
@@ -62,10 +61,10 @@ class Basket():
         :return:
         """
         product_id = str(product)
-        if product_id is self.basket:
+        if product_id in self.basket:
             del self.basket[product_id]
-
-        self.save()
+            print(product_id)
+            self.save()
 
     def update(self, product, qty):
         """
