@@ -1,5 +1,5 @@
 {% extends "store/base.html" %}
-{% block title %}Log-in{% endblock %}
+{% block title %}Login{% endblock %}
 {% block content %}
 
 <style>
@@ -26,7 +26,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6  mx-auto">
-                            <form class="account-form p-4 rounded" action="{% url 'account:login' %}" method="post">
+                            <form class="account-form p-4" action="{% url 'account:login' %}" method="post">
 
                                 {% csrf_token %}
                                 <h3 class="mb-4">Sign In</h3>
