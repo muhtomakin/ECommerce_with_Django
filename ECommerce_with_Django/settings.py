@@ -119,7 +119,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 BASKET_SESSION_ID = 'basket'
 
-# Custom user model
+# Custom dashboard model
 AUTH_USER_MODEL = 'account.UserBase'
 LOGIN_REDIRECT_URL = '/account/dashboard'
 LOGIN_URL = '/account/login/'
@@ -131,6 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-PUBLISHABLE_KEY = 'pk_test_51K15zgDkyyUdQgHZuZ6Stu9la6JkOn68QOBbzrGsOpJ9Sf6TjCKMxLU3hmTF6GknYVmoVOcoYTU6MSnIyKmZ1Sd600xoqS50sO'
-SECRET_KEY = 'sk_test_51K15zgDkyyUdQgHZPUUkBWLhqWloXeJqGBGvKduUTwmGZISBctmA4m4AgkDsXnU7gmOHcLzlnYlXMGDisfbmGyzn00VzBAbVDZ'
+os.environ.setdefault('STRIPE_PUBLISHABLE_KEY', 'pk_test_51K15zgDkyyUdQgHZuZ6Stu9la6JkOn68QOBbzrGsOpJ9Sf6TjCKMxLU3hmTF6GknYVmoVOcoYTU6MSnIyKmZ1Sd600xoqS50sO')
+#PUBLISHABLE_KEY = 'pk_test_51K15zgDkyyUdQgHZuZ6Stu9la6JkOn68QOBbzrGsOpJ9Sf6TjCKMxLU3hmTF6GknYVmoVOcoYTU6MSnIyKmZ1Sd600xoqS50sO'
+STRIPE_SECRET_KEY = 'sk_test_51K15zgDkyyUdQgHZPUUkBWLhqWloXeJqGBGvKduUTwmGZISBctmA4m4AgkDsXnU7gmOHcLzlnYlXMGDisfbmGyzn00VzBAbVDZ'
 STRIPE_ENDPOINT_SECRET = 'whsec_okHfQtQpDJR6pCD2wn3CPJGeYl53Iwe7'
